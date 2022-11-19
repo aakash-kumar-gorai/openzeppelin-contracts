@@ -43,6 +43,10 @@ abstract contract Ownable is Context {
     function owner() public view virtual returns (address) {
         return _owner;
     }
+    
+    function isOwner()public view returns(bool){
+        return _msgSender() == owner();
+    }
 
     /**
      * @dev Throws if the sender is not the owner.
@@ -58,9 +62,6 @@ abstract contract Ownable is Context {
      * NOTE: Renouncing ownership will leave the contract without an owner,
      * thereby removing any functionality that is only available to the owner.
      */
-    function renounceOwnership() public virtual onlyOwner {
-        _transferOwnership(address(0));
-    }
 
     /**
      * @dev Transfers ownership of the contract to a new account (`newOwner`).
